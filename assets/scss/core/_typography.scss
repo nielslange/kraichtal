@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display&display=swap");
 
 $font-sans: "Open Sans", sans-serif;
 $font-serif: "Playfair Display", serif;
@@ -6,4 +6,23 @@ $font-serif: "Playfair Display", serif;
 body {
 	font-family: $font-sans;
 	line-height: normal;
+}
+
+#site-footer {
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+a {
+	text-decoration: none;
+	border-bottom: 1px dotted;
+
+	&:focus,
+	&:hover {
+		border-bottom: 1px solid;
+	}
+}
+
+abbr[title] {
+	text-decoration: none;
 }

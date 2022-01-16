@@ -12,7 +12,7 @@
 get_header(); ?>
 
 <main id="site-content">
-    <p>FRONT-PAGE</p>
+	<p>FRONT-PAGE</p>
 </main><!-- #site-content -->
 
 <?php

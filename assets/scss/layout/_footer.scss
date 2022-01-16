@@ -1,0 +1,9 @@
+#site-footer {
+	padding: 20px;
+}
+
+@media screen and (min-width: $screen-lg-min) {
+	#site-footer {
+		text-align: center;
+	}
+}

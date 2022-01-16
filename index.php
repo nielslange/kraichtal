@@ -12,7 +12,7 @@
 get_header(); ?>
 
 <main id="site-content">
-    <p>INDEX</p>
+	<p>INDEX</p>
 </main><!-- #site-content -->
 
 <?php
