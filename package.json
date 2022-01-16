@@ -1,0 +1,47 @@
+{
+	"name": "kraichtal",
+	"version": "1.0.0",
+	"description": "The Kraichtal theme is a custom theme, handcrafted for Stephanie Haller.",
+	"author": "Niels Lange <info@nielslange.de>",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"WordPress",
+		"Theme",
+		"Kraichtal"
+	],
+	"homepage": "https://github.com/nielslange/kraichtal#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nielslange/kraichtal.git"
+	},
+	"bugs": {
+		"url": "https://github.com/nielslange/kraichtal/issues"
+	},
+	"devDependencies": {
+		"@wordpress/browserslist-config": "4.1.0",
+		"@wordpress/scripts": "19.2.2",
+		"@wordpress/stylelint-config": "19.1.0",
+		"autoprefixer": "10.4.2",
+		"node-sass": "7.0.1",
+		"normalize.css": "8.0.1",
+		"npm-run-all": "4.1.5",
+		"stylelint": "13.13.1"
+	},
+	"browserslist": [
+		"extends @wordpress/browserslist-config"
+	],
+	"scripts": {
+		"build": "run-p -l 'build:**'",
+		"build:style": "node-sass --include-path scss assets/scss/style.scss style.css --output-style compressed",
+		"build:editor": "node-sass --include-path scss assets/scss/editor.scss editor.css --output-style compressed",
+		"format": "wp-scripts format",
+		"lint": "run-p -l 'lint:**'",
+		"lint:css": "wp-scripts lint-style style.css",
+		"lint:js": "wp-scripts lint-js 'assets/**/*.js'",
+		"lint:php": "composer lint",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"phpcs": " composer phpcs",
+		"phpcbf": "composer phpcbf",
+		"watch:sass": "run-p -l 'build:** -- --watch'"
+	}
+}
