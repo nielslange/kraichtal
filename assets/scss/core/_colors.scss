@@ -1,0 +1,20 @@
+/* https://coolors.co/333333-666666-790e11-5e81ac-ffffff-ffffff */
+$color-black: #333;
+$color-dark-grey: #666;
+$color-light-grey: #ccc;
+$color-red: #790e11;
+$color-blue: #5e81ac;
+$color-white: #fff;
+
+body {
+	background: $color-black;
+}
+
+#site-footer {
+	background: $color-black;
+	color: $color-light-grey;
+
+	a {
+		color: $color-light-grey;
+	}
+}

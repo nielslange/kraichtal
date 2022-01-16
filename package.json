@@ -42,6 +42,6 @@
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
 		"phpcs": " composer phpcs",
 		"phpcbf": "composer phpcbf",
-		"watch:sass": "run-p -l 'build:** -- --watch'"
+		"watch:style": "run-s -l 'build:style -- --watch'"
 	}
 }

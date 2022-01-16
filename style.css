@@ -1,4 +1,4 @@
-/*!
+﻿/*!
 Theme Name: Kraichtal
 Text Domain: kraichtal
 Theme URI: https://github.com/nielslange/kraichtal/
@@ -11,4 +11,4 @@ Description: The Kraichtal theme is a custom theme, handcrafted for Stephanie Ha
 Tags:
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-*/@import url(node_modules/normalize.css/normalize.css);@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap");body{font-family:"Open Sans",sans-serif;line-height:normal}
+*/@import url(node_modules/normalize.css/normalize.css);@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display&display=swap");body{font-family:"Open Sans",sans-serif;line-height:normal}#site-footer{font-size:12px;text-transform:uppercase}a{text-decoration:none;border-bottom:1px dotted}a:focus,a:hover{border-bottom:1px solid}abbr[title]{text-decoration:none}body{background:#333}#site-footer{background:#333;color:#ccc}#site-footer a{color:#ccc}#site-footer{padding:20px}@media screen and (min-width: 992px){#site-footer{text-align:center}}#menu-footer-menu{display:inline;margin:0;padding:0}#menu-footer-menu li{display:inline}#menu-footer-menu li::after{content:" • "}

@@ -66,7 +66,7 @@ add_action( 'after_setup_theme', 'kraichtal_register_menus' );
 // Register and enqueue styles.
 function kraichtal_register_styles() {
 	$theme_version = wp_get_theme()->get( 'Version' );
-	wp_enqueue_style( 'kraichtal-style', get_stylesheet_uri(), array(), $theme_version );
+	wp_enqueue_style( 'kraichtal-style', get_stylesheet_uri(), array(), time() );
 }
 add_action( 'wp_enqueue_scripts', 'kraichtal_register_styles' );
 

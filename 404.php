@@ -12,7 +12,7 @@
 get_header(); ?>
 
 <main id="site-content">
-    <p>404</p>
+	<p>404</p>
 </main><!-- #site-content -->
 
 <?php
