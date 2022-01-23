@@ -1,0 +1,32 @@
+name: Run PHPCS and PHPLint
+
+on: [pull_request]
+
+jobs:
+  test:
+    name: Run static tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v1
+
+      - name: Show PHPCS sniffs
+        run: ./vendor/bin/phpcs -i
+
+      - name: Show version info
+        run: |
+          php --version
+          ./vendor/bin/phpcs --version
+
+      - name: Run PHP_CodeSniffer
+        run: composer phpcs
+
+      - name: Run PHPLint
+        run: composer lint
+
+      - name: Run PHPStan
+        run: composer analyze
