@@ -25,8 +25,8 @@ jobs:
       - name: Run PHP_CodeSniffer
         run: composer phpcs
 
-      - name: Lint CSS
-        run: npm run lint:css
+      - name: Run PHPLint
+        run: composer lint
 
-      - name: lint:php
-        run: npm run lint:php
+      - name: Run PHPStan
+        run: composer analyze
