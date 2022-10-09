@@ -20,6 +20,34 @@
 
 <body <?php body_class(); ?>>
 
-<?php wp_body_open(); ?>
+<?php //wp_body_open(); ?>
 
-<header id="site-header"></header><!-- #site-header -->
+<header id="site-header">
+
+	<div id="site-header-logo">
+		<?php
+
+		if ( function_exists( 'the_custom_logo' ) ) {
+			the_custom_logo();
+		}
+
+		?>
+	</div><!-- #site-header-logo -->
+
+	<div id="site-header-menu">
+
+		<button id="menu-primary-toggle"></button><!-- .nav-toggle -->
+
+		<?php
+		if ( has_nav_menu( 'primary' ) ) {
+			$args = array(
+				'theme_location' => 'primary',
+				'container'      => 'nav',
+				'depth'          => 2,
+			);
+			wp_nav_menu( $args );
+		}
+		?>
+	</div><!-- #site-header-menu -->
+
+</header><!-- #site-header -->

@@ -1,0 +1,15 @@
+body.blog #site-content {
+	#posts_link {
+		position: relative;
+
+		#previous_posts_link {
+			position: absolute;
+			left: 0;
+		}
+
+		#next_posts_link {
+			position: absolute;
+			right: 0;
+		}
+	}
+}

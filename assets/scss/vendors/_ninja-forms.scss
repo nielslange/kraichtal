@@ -1,0 +1,26 @@
+.nf-before-form-content,
+.nf-after-form-content {
+	display: none;
+}
+
+.nf-form-cont {
+	.nf-form-content {
+
+		label {
+			font-size: 16px;
+		}
+
+		.checkbox-container.label-right {
+
+			.field-wrap {
+				display: initial;
+
+
+				.nf-field-description {
+					margin-top: 1em;
+					;
+				}
+			}
+		}
+	}
+}

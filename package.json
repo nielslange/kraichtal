@@ -32,8 +32,8 @@
 	],
 	"scripts": {
 		"build": "run-p -l 'build:**'",
-		"build:style": "node-sass --include-path scss assets/scss/style.scss style.css --output-style compressed",
 		"build:editor": "node-sass --include-path scss assets/scss/editor.scss editor.css --output-style compressed",
+		"build:style": "node-sass --include-path scss assets/scss/style.scss style.css --output-style compressed",
 		"format": "wp-scripts format",
 		"lint": "run-p -l 'lint:**'",
 		"lint:css": "wp-scripts lint-style style.css",
@@ -42,6 +42,7 @@
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
 		"phpcs": " composer phpcs",
 		"phpcbf": "composer phpcbf",
+		"watch:editor": "run-s -l 'build:editor -- --watch'",
 		"watch:style": "run-s -l 'build:style -- --watch'"
 	}
 }

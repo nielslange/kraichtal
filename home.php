@@ -9,10 +9,67 @@
  * @since 1.0.0
  */
 
-get_header(); ?>
+get_header();
+$posts_page = get_option( 'page_for_posts' );
+
+?>
 
 <main id="site-content">
-	<p>HOME</p>
+
+	<div id="page">
+
+		<div id="title" style="background-image: url(<?php echo get_the_post_thumbnail_url( $posts_page ); ?>)">
+			<?php printf( '<h1>%s</h1>', get_the_title( $posts_page ) ); ?>
+		</div>
+
+		<div id="content">
+
+			<div id="inner-content">
+
+			<?php
+			if ( have_posts() ) {
+				while ( have_posts() ) {
+					the_post();
+					$id    = get_the_ID();
+					$date  = get_the_date( '', $id );
+					$title = get_the_title( $id );
+					$link  = get_the_permalink( $id );
+
+					printf(
+						'<article class="%s" id="post-%i">
+							<p>%s</p>
+							<h2>%s</h2>
+							%s
+							<p><a href="%s">Weiterlesen</a></p>
+						</article>',
+						implode( ' ', get_post_class() ),
+						$id,
+						$date,
+						$title,
+						get_the_excerpt(),
+						$link
+					);
+
+				} // end while
+
+				printf(
+					'<div id="posts_link">
+						<div id="previous_posts_link">%s</div>
+						<div id="next_posts_link">%s</div>
+					</div>',
+					get_previous_posts_link( '&laquo; Vorherige Seite' ),
+					get_next_posts_link( 'Nächste Seite &raquo;', '' )
+				);
+
+			} // end if
+			?>
+
+			</div><!-- #inner-content -->
+
+		</div><!-- #content -->
+
+	</div><!-- #page -->
+
 </main><!-- #site-content -->
 
 <?php

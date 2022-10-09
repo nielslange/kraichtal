@@ -1,0 +1,21 @@
+#site-header {
+	background: $color-white;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 3em;
+
+	#site-header-logo {
+		a {
+			border: none;
+
+			img {
+				height: auto;
+				max-width: 200px;
+			}
+		}
+	}
+
+	#site-header-menu {
+		align-self: center;
+	}
+}

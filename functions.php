@@ -53,6 +53,16 @@ function kraichtal_html5_support() {
 }
 add_action( 'after_setup_theme', 'kraichtal_html5_support' );
 
+// Add support for featured images on pages.
+function kraichtal_featured_images_support() {
+	add_theme_support(
+		'post-thumbnails',
+		array( 'post', 'page' )
+	);
+}
+add_action( 'after_setup_theme', 'kraichtal_featured_images_support' );
+
+
 // Register custom menus.
 function kraichtal_register_menus() {
 	$locations = array(
@@ -70,6 +80,14 @@ function kraichtal_register_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'kraichtal_register_styles' );
 
+// Register and enqueue styles.
+function kraichtal_register_scripts() {
+	$theme_version = wp_get_theme()->get( 'Version' );
+	wp_enqueue_script( 'kraichtal-menu-script', get_template_directory_uri() . '/assets/js/menu.js', array(), time(), true );
+
+}
+add_action( 'wp_enqueue_scripts', 'kraichtal_register_scripts' );
+
 // Include a skip to content link.
 function kraichtal_skip_link() {
 	echo '<a class="skip-link screen-reader-text" href="#site-content">' . __( 'Skip to the content', 'kraichtal' ) . '</a>';
@@ -79,3 +97,25 @@ add_action( 'wp_body_open', 'kraichtal_skip_link', 5 );
 // Include required files.
 require get_template_directory() . '/inc/template-tags.php';
 
+function hide_editor() {
+	$post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'];
+	if ( ! isset( $post_id ) ) {
+		return;
+	}
+	$page_slug     = get_the_title( $post_id );
+	$page_template = get_post_meta( $post_id, '_wp_page_template', true );
+
+	if ( $page_slug == 'Home' || $page_template == 'page-gallery.php' ) {
+		remove_post_type_support( 'page', 'editor' );
+	}
+}
+add_action( 'admin_init', 'hide_editor' );
+
+function filter_image_sizes() {
+	foreach ( get_intermediate_image_sizes() as $size ) {
+		if ( in_array( $size, array( 'medium', 'medium_large', 'large', '1536x1536', '2048x2048' ) ) ) {
+			remove_image_size( $size );
+		}
+	}
+}
+add_action( 'init', 'filter_image_sizes' );

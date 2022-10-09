@@ -1,7 +1,8 @@
 /* https://coolors.co/333333-666666-790e11-5e81ac-ffffff-ffffff */
 $color-black: #333;
 $color-dark-grey: #666;
-$color-light-grey: #ccc;
+$color-medium-grey: #ccc;
+$color-light-grey: #f8f8f8;
 $color-red: #790e11;
 $color-blue: #5e81ac;
 $color-white: #fff;
@@ -10,11 +11,57 @@ body {
 	background: $color-black;
 }
 
+a {
+	color: $color-red;
+}
+
+.home {
+	.section {
+		background-color: $color-white;
+		color: $color-black;
+
+		a {
+			color: $color-black;
+		}
+
+		&:nth-of-type(even) {
+			background-color: $color-black;
+			color: $color-white;
+
+			a {
+				color: $color-white;
+			}
+		}
+	}
+
+}
+
+#menu-primary-menu {
+	li {
+		a {
+			color: $color-black;
+
+			&:hover {
+				color: $color-red;
+			}
+		}
+
+		.sub-menu li a {
+			color: $color-dark-grey;
+
+			&:hover {
+				background-color: $color-light-grey;
+				color: $color-dark-grey;
+			}
+		}
+	}
+}
+
 #site-footer {
 	background: $color-black;
-	color: $color-light-grey;
+	color: $color-medium-grey;
 
 	a {
-		color: $color-light-grey;
+		color: $color-medium-grey;
 	}
 }
