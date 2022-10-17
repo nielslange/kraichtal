@@ -1,42 +1,57 @@
 body.page #site-content,
 body.blog #site-content,
 body.single #site-content {
-	background: $color-white;
+	background-color: $color-white;
 
 	#page {
 		display: flex;
 
 		h1 {
+			color: $color-white;
+			font-family: $font-sans-serif;
+			font-size: 2.5rem;
+			font-weight: 400;
 			margin-top: 0;
 			padding: 3em;
 			text-align: center;
-			color: $color-white;
+			&::after {
+				background-color: $color-white;
+				bottom: 0;
+				content: "";
+				display: block;
+				height: 2px;
+				left: 0;
+				margin: 10px auto;
+				position: relative;
+				right: 0;
+				width: 120px;
+			}
 		}
 
 		#title {
-			background: rgba(51, 51, 51, 0.75);
+			align-items: center;
+			background-color: rgba(51, 51, 51, 0.75);
+			background-blend-mode: darken;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
-			background-blend-mode: darken;
-			width: 50%;
 			display: flex;
 			height: calc(100vh - 160px);
 			justify-content: center;
-			align-items: center;
+			width: 50%;
 		}
 
 		#content {
 			background-color: #fbfbfd;
+			box-sizing: border-box;
+			height: calc(100vh - 160px);
+			overflow-y: scroll;
 			padding: 3em;
 			width: 50%;
-			overflow-y: scroll;
-			height: calc(100vh - 160px);
-			box-sizing: border-box;
 
 			#inner-content {
-				max-width: 800px;
 				margin: 0 auto;
+				max-width: 800px;
 			}
 		}
 	}
