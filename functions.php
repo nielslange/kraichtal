@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Kraichtal functions and definitions.
  *
@@ -24,7 +25,7 @@ add_action( 'after_setup_theme', 'load_theme_textdomain' );
  * @return void
  */
 function kraichtal_feed_support() {
-	add_theme_support( 'automatic-feed-links' );
+	 add_theme_support( 'automatic-feed-links' );
 }
 add_action( 'after_setup_theme', 'kraichtal_feed_support' );
 
@@ -34,13 +35,13 @@ add_action( 'after_setup_theme', 'kraichtal_feed_support' );
  * @return void
  */
 function kraichtal_logo_support() {
-	$defaults = array(
-		'height'      => 140,
-		'width'       => 400,
-		'flex-height' => true,
-		'flex-width'  => true,
-	);
-	add_theme_support( 'custom-logo', $defaults );
+	 $defaults = array(
+		 'height'      => 140,
+		 'width'       => 400,
+		 'flex-height' => true,
+		 'flex-width'  => true,
+	 );
+	 add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'kraichtal_logo_support' );
 
@@ -117,9 +118,8 @@ add_action( 'wp_enqueue_scripts', 'kraichtal_register_styles' );
  * @return void
  */
 function kraichtal_register_scripts() {
-	$theme_version = wp_get_theme()->get( 'Version' );
+	 $theme_version = wp_get_theme()->get( 'Version' );
 	wp_enqueue_script( 'kraichtal-menu-script', get_template_directory_uri() . '/assets/js/menu.js', array(), time(), true );
-
 }
 add_action( 'wp_enqueue_scripts', 'kraichtal_register_scripts' );
 
@@ -139,6 +139,7 @@ add_action( 'wp_body_open', 'kraichtal_skip_link', 5 );
  * @return void
  */
 require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/cpt.php';
 
 function hide_editor() {
 	$post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'];
@@ -149,7 +150,7 @@ function hide_editor() {
 	$page_slug     = get_the_title( $post_id );
 	$page_template = get_post_meta( $post_id, '_wp_page_template', true );
 
-	if ( $page_slug == 'Home' || $page_template == 'page-gallery.php' ) {
+	if ( 'Home' === $page_slug || 'page-gallery.php' === $page_template ) {
 		remove_post_type_support( 'page', 'editor' );
 	}
 }
@@ -157,7 +158,7 @@ add_action( 'admin_init', 'hide_editor' );
 
 function filter_image_sizes() {
 	foreach ( get_intermediate_image_sizes() as $size ) {
-		if ( in_array( $size, array( 'medium', 'medium_large', 'large', '1536x1536', '2048x2048' ) ) ) {
+		if ( in_array( $size, array( 'medium', 'medium_large', 'large', '1536x1536', '2048x2048' ), true ) ) {
 			remove_image_size( $size );
 		}
 	}

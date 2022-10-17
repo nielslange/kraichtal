@@ -2,7 +2,7 @@
 /**
  * Gallery template for the Kraichtal WordPress theme.
  *
- * Template Name: Gallery Template
+ * Template Name: Gallery template
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#common-wordpress-template-files
  * @link https://developer.wordpress.org/themes/template-files-section/page-template-files/
@@ -12,19 +12,36 @@
  * @since 1.0.0
  */
 
+// Bail out if ACF is not active.
+class_exists( 'ACF' ) || die( 'ACF not found!' );
+
 get_header(); ?>
 
 <main id="site-content">
 
-	GALLERIE
-
 	<?php
+
 	if ( have_posts() ) {
 		while ( have_posts() ) {
 			the_post();
-		} // end while
-	} // end if
+			$images = get_field( 'gallery' );
+			if ( $images ) :
+				?>
+				<div id="inner-content">
+				<?php foreach ( $images as $image ) : ?>
+
+					<a href="<?php echo esc_url( $image['url'] ); ?>">
+						<img src="<?php echo esc_url( $image['sizes']['large'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+					</a>
+
+				<?php endforeach; ?>
+				</div><!-- #inner-content -->
+				<?php
+			endif;
+		}
+	}
 	?>
+
 
 </main><!-- #site-content -->
 

@@ -1,18 +1,4 @@
 @font-face {
-	font-family: "Playfair Display";
-	src: url(./assets/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf);
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "Playfair Display";
-	src: url(./assets/fonts/Playfair_Display/static/PlayfairDisplay-SemiBold.ttf);
-	font-weight: 600;
-	font-style: normal;
-}
-
-@font-face {
 	font-family: "Open Sans";
 	src: url(./assets/fonts/Open_Sans/static/OpenSans/OpenSans-Regular.ttf);
 	font-weight: 400;
@@ -26,17 +12,31 @@
 	font-style: normal;
 }
 
-$font-sans: "Open Sans", sans-serif;
-$font-serif: "Playfair Display", serif;
+@font-face {
+	font-family: "Playfair Display";
+	src: url(./assets/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf);
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src: url(./assets/fonts/Playfair_Display/static/PlayfairDisplay-SemiBold.ttf);
+	font-weight: 600;
+	font-style: normal;
+}
+
+$font-sans-primary: "Open Sans", sans-serif;
+$font-sans-serif: "Playfair Display", serif;
 
 body {
-	font-family: $font-serif;
+	font-family: $font-sans-serif;
 	font-size: 1rem;
 	line-height: 1.75;
 }
 
 #menu-primary-menu a {
-	font-family: $font-sans;
+	font-family: $font-sans-primary;
 	font-size: 12px;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -46,7 +46,7 @@ body {
 #page {
 	#title {
 		h1 {
-			font-family: $font-serif;
+			font-family: $font-sans-serif;
 			font-size: 2.5rem;
 			font-weight: 400;
 
@@ -83,4 +83,13 @@ a {
 
 abbr[title] {
 	text-decoration: none;
+}
+
+.course {
+	h3,
+	h2,
+	.sold-out {
+		font-family: $font-sans-primary;
+		font-weight: 400;
+	}
 }

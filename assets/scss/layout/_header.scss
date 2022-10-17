@@ -1,8 +1,14 @@
 #site-header {
 	background: $color-white;
 	display: flex;
+	position: fixed;
+	width: 100%;
 	justify-content: space-between;
 	padding: 0 3em;
+	box-sizing: border-box;
+	top: 0;
+	left: 0;
+	z-index: 2;
 
 	#site-header-logo {
 		a {

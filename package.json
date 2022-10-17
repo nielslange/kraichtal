@@ -42,7 +42,7 @@
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
 		"phpcs": " composer phpcs",
 		"phpcbf": "composer phpcbf",
-		"watch:editor": "run-s -l 'build:editor -- --watch'",
-		"watch:style": "run-s -l 'build:style -- --watch'"
+		"watch:editor": "npm run build:editor && npm run build:editor -- --watch",
+		"watch:style": "npm run build:style && npm run build:style -- --watch"
 	}
 }

@@ -1,10 +1,15 @@
 #site-footer {
 	padding: 30px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 2;
 }
 
 @media screen and (min-width: $screen-lg-min) {
 	#site-footer {
 		text-align: center;
-		font-family: $font-sans;
+		font-family: $font-sans-primary;
 	}
 }

@@ -98,6 +98,21 @@
 						}
 					}
 				}
+
+				&.menu-item-has-children {
+					&:after {
+						content: url(assets/icons/chevron-down-solid.svg);
+						width: 10px;
+						font-style: normal;
+						font-weight: normal;
+						vertical-align: bottom;
+						position: absolute;
+						bottom: 10px;
+						left: 0;
+						right: 0;
+						margin: 0 auto;
+					}
+				}
 			}
 		}
 	}

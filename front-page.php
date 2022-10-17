@@ -9,15 +9,16 @@
  * @since 1.0.0
  */
 
-if ( ! class_exists( 'ACF' ) ) {
-	return;
-}
+// Bail out if ACF is not active.
+class_exists( 'ACF' ) || die( 'ACF not found!' );
 
 get_header();
 ?>
 
 <main id='site-content'>
+
 <?php
+
 if ( have_posts() ) {
 	while ( have_posts() ) {
 		the_post();
@@ -32,12 +33,12 @@ if ( have_posts() ) {
 					<div class="image" style="background-image:url(<?php echo $image; ?>);"></div>
 				</div>
 				<?php
-				print( '' );
 			}
 		}
 	}
 }
 ?>
+
 </main><!-- #site-content -->
 
 <?php

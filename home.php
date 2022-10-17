@@ -9,7 +9,12 @@
  * @since 1.0.0
  */
 
+// Bail out if ACF is not active.
+class_exists( 'ACF' ) || die( 'ACF not found!' );
+
 get_header();
+
+// Get the posts page ID.
 $posts_page = get_option( 'page_for_posts' );
 
 ?>
@@ -18,9 +23,15 @@ $posts_page = get_option( 'page_for_posts' );
 
 	<div id="page">
 
-		<div id="title" style="background-image: url(<?php echo get_the_post_thumbnail_url( $posts_page ); ?>)">
-			<?php printf( '<h1>%s</h1>', get_the_title( $posts_page ) ); ?>
-		</div>
+		<?php
+		printf(
+			'<div id="title" style="background-image: url(%s)">
+				<h1>%s</h1>
+			</div>',
+			get_the_post_thumbnail_url( $posts_page ),
+			get_the_title( $posts_page )
+		);
+		?>
 
 		<div id="content">
 
