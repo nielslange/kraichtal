@@ -25,7 +25,7 @@ function get_copyright() {
 		$data .= wp_nav_menu( $args );
 	}
 
-	$data .= sprintf( 'Entwickelt mit <abbr title="December 5, 2021 • Jakarta, Indonesia">♥</abbr> by <a href="https://nielslange.de/" target="_blank" title="Niels Lange | WordPress Developer"><strong>Niels Lange</strong></a>' );
+	$data .= sprintf( 'Entwickelt mit <abbr title="December 5, 2021 • Jakarta, Indonesia">♥</abbr> von <a href="https://nielslange.de/" target="_blank" title="Niels Lange | WordPress Developer"><strong>Niels Lange</strong></a>' );
 
 	return $data;
 }
