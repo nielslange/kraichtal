@@ -27,19 +27,40 @@
 		left: 0;
 		top: 64px;
 		width: 100%;
-		height: calc(100vh - 100px);
+		height: calc(100vh - 80px);
 		overflow: scroll;
 		box-sizing: border-box;
 		list-style: none;
 		padding: 2em 2em 4em;
 
 		li {
-			padding: 0.5em 0;
+			position: relative;
+			padding: 15px 0;
+			box-sizing: border-box;
+			margin: 0;
+			border-top: 1px solid $color-dark-grey;
+
+			&:last-child {
+				padding: 15px 0 0 0;
+			}
+
+			a {
+				border-bottom: none;
+			}
 
 			ul {
-				padding-top: 0.5em;
+				padding: 15px 0 0 0;
+				margin: 0;
 				list-style: none;
 			}
+		}
+
+		li > a {
+			padding-left: 20px;
+		}
+
+		li li > a {
+			padding-left: 40px;
 		}
 	}
 }
