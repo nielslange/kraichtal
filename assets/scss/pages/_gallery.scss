@@ -1,3 +1,27 @@
 body.gallery #site-content {
-	background-color: $color-black;
+	background-color: $color-white;
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+		grid-gap: 10px;
+		align-items: stretch;
+		list-style: none;
+		margin: 0 0.5em 0.5em;
+
+		.grid-item {
+			display: block;
+			max-width: 100%;
+
+			a {
+				border: none;
+
+				img {
+					display: block;
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
+	}
 }

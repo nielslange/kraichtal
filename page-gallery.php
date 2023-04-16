@@ -21,25 +21,25 @@ get_header(); ?>
 
 	<?php
 
-	if ( have_posts() ) {
-		while ( have_posts() ) {
+	if ( have_posts() ) :
+		while ( have_posts() ) :
 			the_post();
 			$images = get_field( 'gallery' );
 			if ( $images ) :
 				?>
-				<div id="inner-content">
-				<?php foreach ( $images as $image ) : ?>
-
-					<a href="<?php echo esc_url( $image['url'] ); ?>">
-						<img src="<?php echo esc_url( $image['sizes']['large'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
-					</a>
-
-				<?php endforeach; ?>
-				</div><!-- #inner-content -->
+				<div class="grid">
+					<?php foreach ( $images as $image ) : ?>
+						<div class="grid-item">
+							<a href="<?php echo esc_url( $image['url'] ); ?>" data-lightbox="roadtrip">
+								<img src="<?php echo esc_url( $image['sizes']['thumbnail'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+							</a>
+						</div>
+					<?php endforeach; ?>
+				</div>
 				<?php
 			endif;
-		}
-	}
+		endwhile;
+	endif;
 	?>
 
 

@@ -1,4 +1,20 @@
 body.blog #site-content {
+	article {
+		border-bottom: 1px solid $color-semi-light-grey;
+		margin-bottom: 50px;
+		padding-bottom: 30px;
+
+		.entry-meta {
+			font-size: 0.9em;
+			margin: 0;
+		}
+
+		h2 {
+			font-size: 2rem;
+			margin-top: 0.2em;
+		}
+	}
+
 	#posts_link {
 		position: relative;
 

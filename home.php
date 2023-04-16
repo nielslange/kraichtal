@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Home template for the Kraichtal WordPress theme.
  *
@@ -37,43 +38,53 @@ $posts_page = get_option( 'page_for_posts' );
 
 			<div id="inner-content">
 
-			<?php
-			if ( have_posts() ) {
-				while ( have_posts() ) {
-					the_post();
-					$id    = get_the_ID();
-					$date  = get_the_date( '', $id );
-					$title = get_the_title( $id );
-					$link  = get_the_permalink( $id );
+				<?php
+				if ( have_posts() ) {
+					while ( have_posts() ) {
+						the_post();
+						setlocale( LC_TIME, 'de_DE' );
+						$id      = get_the_ID();
+						$class   = implode( ' ', get_post_class() );
+						$date    = datefmt_format(
+							datefmt_create(
+								'de-DE',
+								IntlDateFormatter::LONG,
+								IntlDateFormatter::NONE,
+								'Europe/Berlin',
+								IntlDateFormatter::GREGORIAN
+							),
+							strtotime( get_the_date( '', $id ) )
+						);
+						$title   = get_the_title( $id );
+						$link    = get_the_permalink( $id );
+						$excerpt = get_the_excerpt( $id );
+
+						printf(
+							'<article class="%1$s" id="post-%2$s">
+								<p class="entry-meta">%3$s</p>
+								<h2 class="entry-title"><a href="%4$s">%5$s</a></h2>
+								%6$s
+								<p><a href="%4$s">Weiterlesen</a></p>
+							</article>',
+							$class,
+							$id,
+							$date,
+							$link,
+							$title,
+							$excerpt
+						);
+					} // end while
 
 					printf(
-						'<article class="%s" id="post-%i">
-							<p>%s</p>
-							<h2>%s</h2>
-							%s
-							<p><a href="%s">Weiterlesen</a></p>
-						</article>',
-						implode( ' ', get_post_class() ),
-						$id,
-						$date,
-						$title,
-						get_the_excerpt(),
-						$link
+						'<div id="posts_link">
+							<div id="previous_posts_link">%s</div>
+							<div id="next_posts_link">%s</div>
+						</div>',
+						get_previous_posts_link( '&laquo; Vorherige Seite' ),
+						get_next_posts_link( 'Nächste Seite &raquo;', '' )
 					);
-
-				} // end while
-
-				printf(
-					'<div id="posts_link">
-						<div id="previous_posts_link">%s</div>
-						<div id="next_posts_link">%s</div>
-					</div>',
-					get_previous_posts_link( '&laquo; Vorherige Seite' ),
-					get_next_posts_link( 'Nächste Seite &raquo;', '' )
-				);
-
-			} // end if
-			?>
+				} // end if
+				?>
 
 			</div><!-- #inner-content -->
 

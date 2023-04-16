@@ -25,7 +25,6 @@ get_header(); ?>
 				<div id="content">
 					<div id="inner-content">
 						<?php the_content(); ?>
-						CONTENT
 					</div><!-- #inner-content -->
 				</div><!-- #content -->
 			</div><!-- #page -->

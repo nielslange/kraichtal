@@ -1,0 +1,34 @@
+#commentform {
+	textarea {
+		height: 200px;
+		padding: 12px;
+		box-sizing: border-box;
+		font-size: 16px;
+	}
+
+	textarea,
+	input {
+		padding: 12px;
+		background: #f7f7f7;
+		border: 1px solid #c4c4c4;
+		border-radius: 0;
+		box-shadow: none;
+		color: #787878;
+		transition: all 0.5s;
+		width: 100%;
+	}
+
+	input[type="submit"] {
+		background: #333;
+		border: 0;
+		color: #f7f7f7;
+		transition: all 0.5s;
+		height: 50px;
+		width: auto;
+		&:hover {
+			background: #c4c4c4;
+			color: #787878;
+			transition: all 0.5s;
+		}
+	}
+}

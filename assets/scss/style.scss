@@ -14,16 +14,18 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 @import "node_modules/normalize.css/normalize.css";
-@import "abstracts/variables";
+@import "core/variables";
 @import "core/colors";
 @import "core/typography";
 @import "layout/header";
 @import "layout/main";
 @import "layout/footer";
+@import "layout/commentform";
 @import "layout/navigation";
 @import "pages/page";
 @import "pages/blog";
 @import "pages/home";
 @import "pages/courses";
 @import "pages/gallery";
+@import "blocks/wp-block-gallery";
 @import "vendors/ninja-forms";

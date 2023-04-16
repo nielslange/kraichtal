@@ -72,20 +72,29 @@ get_header(); ?>
 								$permalink = get_the_permalink( $id );
 								$title     = get_the_title( $id );
 								$teaser    = get_field( 'event_teaser' );
-								$date      = strftime( '%A, %d.%m.%Y', strtotime( get_post_meta( $id, 'event_date', true ) ) );
+								$date      = datefmt_format(
+									datefmt_create(
+										'de-DE',
+										IntlDateFormatter::LONG,
+										IntlDateFormatter::NONE,
+										'Europe/Berlin',
+										IntlDateFormatter::GREGORIAN
+									),
+									strtotime( get_the_date( '', $id ) )
+								);
 								$time      = substr( get_post_meta( $id, 'event_time', true ), 0, 5 );
 								$price     = 'EUR ' . number_format( get_post_meta( $id, 'event_price', true ), 2, ',', '.' );
 								$image     = has_post_thumbnail( $id ) ? wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'large', false ) : array( 0 => get_stylesheet_directory_uri() . '/images/logo-stephanie-haller-augenschmaus-und-gaumenfreuden-quer.png' );
 
 								printf(
 									'<div class="course">
-                                    <a href="%1$s" class="image %9$s" style="display:block; min-height: 300px; background:url(%2$s); background-size:cover; background-position:center;"></a>
-                                    %3$s
-                                    <h3>%4$s &bull; %5$s Uhr &bull; %6$s</h3>
-                                    <h2>%7$s</h2>
-                                    <p class="teaser">%8$s</p>
-                                    <p class="read-more"><a href="%1$s"><strong>Weiterlesen</strong></a></p>
-                                </div>',
+										<a href="%1$s" class="image %9$s" style="display:block; min-height: 300px; background:url(%2$s); background-size:cover; background-position:center;"></a>
+										%3$s
+										<h3>%4$s &bull; %5$s Uhr &bull; %6$s</h3>
+										<h2>%7$s</h2>
+										<p class="teaser">%8$s</p>
+										<p class="read-more"><a href="%1$s"><strong>Weiterlesen</strong></a></p>
+									</div>',
 									$permalink,
 									$image[0],
 									$badge,

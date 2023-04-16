@@ -56,3 +56,23 @@ body.single #site-content {
 		}
 	}
 }
+
+@media screen and (max-width: $screen-md-min) {
+	body.page #site-content,
+	body.blog #site-content,
+	body.single #site-content {
+		#page {
+			flex-direction: column;
+
+			#title {
+				height: 300px;
+				width: 100%;
+			}
+
+			#content {
+				height: auto;
+				width: 100%;
+			}
+		}
+	}
+}

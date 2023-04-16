@@ -13,6 +13,7 @@
 		&:nth-of-type(even) {
 			background-color: $color-black;
 			color: $color-white;
+			flex-direction: row-reverse;
 
 			a {
 				color: $color-white;
@@ -36,9 +37,26 @@
 			background-position: center;
 			background-repeat: no-repeat;
 		}
+	}
+}
 
-		&:nth-of-type(even) {
-			flex-direction: row-reverse;
+@media screen and (max-width: $screen-md-min) {
+	.home {
+		.section {
+			flex-direction: column;
+			min-height: auto;
+
+			&:nth-of-type(even) {
+				flex-direction: column;
+			}
+
+			div {
+				width: 100%;
+			}
+
+			.image {
+				height: 300px;
+			}
 		}
 	}
 }

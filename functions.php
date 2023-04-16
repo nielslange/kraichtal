@@ -109,6 +109,7 @@ add_action( 'after_setup_theme', 'kraichtal_register_menus' );
 function kraichtal_register_styles() {
 	$theme_version = wp_get_theme()->get( 'Version' );
 	wp_enqueue_style( 'kraichtal-style', get_stylesheet_uri(), array() );
+	wp_enqueue_style( 'kraichtal-lightbox2-style', get_template_directory_uri() . '/assets/vendors/lightbox2/css/lightbox.min.css', array() );
 }
 add_action( 'wp_enqueue_scripts', 'kraichtal_register_styles' );
 
@@ -118,8 +119,16 @@ add_action( 'wp_enqueue_scripts', 'kraichtal_register_styles' );
  * @return void
  */
 function kraichtal_register_scripts() {
-	 $theme_version = wp_get_theme()->get( 'Version' );
+	$theme_version = wp_get_theme()->get( 'Version' );
 	wp_enqueue_script( 'kraichtal-menu-script', get_template_directory_uri() . '/assets/js/menu.js', array(), time(), true );
+
+	/**
+	 * Load lightbox2 only on gallery page.
+	 */
+	if ( 'page-gallery.php' === basename( get_page_template() ) ) {
+		wp_enqueue_script( 'kraichtal-lightbox2-settings-script', get_template_directory_uri() . '/assets/js/lightbox.js', array( 'kraichtal-lightbox2-script' ), time(), true );
+		wp_enqueue_script( 'kraichtal-lightbox2-script', get_template_directory_uri() . '/assets/vendors/lightbox2/js/lightbox-plus-jquery.min.js', array(), time(), true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'kraichtal_register_scripts' );
 
@@ -134,7 +143,7 @@ function kraichtal_skip_link() {
 add_action( 'wp_body_open', 'kraichtal_skip_link', 5 );
 
 /**
- * Include required files.
+ * Hide page editor on homepage and gallery pages.
  *
  * @return void
  */
@@ -142,7 +151,7 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/cpt.php';
 
 function hide_editor() {
-	$post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'];
+	$post_id = $_GET['post'] ?? null;
 	if ( ! isset( $post_id ) ) {
 		return;
 	}
@@ -155,12 +164,3 @@ function hide_editor() {
 	}
 }
 add_action( 'admin_init', 'hide_editor' );
-
-function filter_image_sizes() {
-	foreach ( get_intermediate_image_sizes() as $size ) {
-		if ( in_array( $size, array( 'medium', 'medium_large', 'large', '1536x1536', '2048x2048' ), true ) ) {
-			remove_image_size( $size );
-		}
-	}
-}
-add_action( 'init', 'filter_image_sizes' );

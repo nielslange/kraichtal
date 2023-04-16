@@ -1,12 +1,15 @@
 #site-footer {
 	background-color: $color-black;
 	bottom: 0;
+	box-sizing: border-box;
 	color: $color-medium-grey;
+	font-family: $font-sans-primary;
 	font-size: 12px;
 	left: 0;
 	padding: 30px;
 	position: fixed;
 	text-transform: uppercase;
+	text-align: center;
 	width: 100%;
 	z-index: 2;
 
@@ -15,9 +18,11 @@
 	}
 }
 
-@media screen and (min-width: $screen-lg-min) {
+@media screen and (max-width: $screen-md-min) {
 	#site-footer {
-		font-family: $font-sans-primary;
-		text-align: center;
+		.wrap {
+			max-width: 400px;
+			margin: auto;
+		}
 	}
 }
