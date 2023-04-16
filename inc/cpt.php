@@ -80,7 +80,16 @@ function nl_manage_kochkurs_posts_custom_column( $column, $post_id ) {
 			echo get_post_meta( $post_id, 'event_available', true ) ? '<span class="alert alert-success">Buchbar</span>' : '<span class="alert alert-danger">Ausgebucht</span>';
 			break;
 		case 'event_date':
-			echo strftime( '%A, %d. %B %Y', strtotime( get_post_meta( $post_id, 'event_date', true ) ) );
+			echo datefmt_format(
+				datefmt_create(
+					'de-DE',
+					IntlDateFormatter::FULL,
+					IntlDateFormatter::NONE,
+					'Europe/Berlin',
+					IntlDateFormatter::GREGORIAN
+				),
+				strtotime( get_post_meta( $post_id, 'event_date', true ) )
+			);
 			break;
 		case 'event_time':
 			echo wp_date( 'H:i', strtotime( get_post_meta( $post_id, 'event_time', true ) ) ) . ' Uhr';

@@ -29,7 +29,6 @@ get_header(); ?>
 				<div id="content">
 					<div id="inner-content">
 						<?php
-						the_post();
 						$id              = get_the_ID();
 						$event_available = get_field( 'event_available' );
 						$event_sub_title = get_field( 'event_sub_title' );
@@ -41,22 +40,24 @@ get_header(); ?>
 						$event_menu      = get_field( 'event_menu' );
 
 						printf(
-							'<article class="%s" id="post-%i">
-									<h2>%s</h2>
-									<p>%s</p>
-									<p>%s</p>
-									<p>%s</p>
-									<p>%s</p>
-									<p>%s</p>
-									<p>%s</p>
-									<p>%s</p>
-								</article>',
+							'<article class="%1$s" id="post-%2$d">
+								<h2>%3$s</h2>
+								<p>
+								<strong>Wo:</strong> %4$s <br>
+								<strong>Wann:</strong> %5$s um %6$s Uhr<br>
+								<strong>Kosten:</strong> EUR %7$s<br>
+								</p>
+								<p>%8$s</p>
+								<h3>Menü / Programm</h3>
+								<p>%9$s</p>
+								<p>%10$s</p>
+							</article>',
 							implode( ' ', get_post_class() ),
 							$id,
 							$event_sub_title,
+							$event_location,
 							$event_date,
 							$event_time,
-							$event_location,
 							$event_price,
 							$event_teaser,
 							$event_menu,

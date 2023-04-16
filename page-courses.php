@@ -60,7 +60,6 @@ get_header(); ?>
 					$query      = new WP_Query( $args );
 					if ( $query->have_posts() ) {
 						setlocale( LC_TIME, 'de_DE' );
-						// setlocale( LC_TIME, 'de_DE.utf8' );
 						print( '<div id="inner-content">' );
 						while ( $query->have_posts() ) {
 							$query->the_post();
@@ -74,12 +73,12 @@ get_header(); ?>
 							$date      = datefmt_format(
 								datefmt_create(
 									'de-DE',
-									IntlDateFormatter::LONG,
+									IntlDateFormatter::FULL,
 									IntlDateFormatter::NONE,
 									'Europe/Berlin',
 									IntlDateFormatter::GREGORIAN
 								),
-								strtotime( get_the_date( '', $id ) )
+								strtotime( get_post_meta( $id, 'event_date', true ) )
 							);
 							$time      = substr( get_post_meta( $id, 'event_time', true ), 0, 5 );
 							$price     = 'EUR ' . number_format( get_post_meta( $id, 'event_price', true ), 2, ',', '.' );
