@@ -1,8 +1,8 @@
 .home {
 	.section {
 		display: flex;
-		flex-direction: row;
-		min-height: calc(50vh - 80px);
+		flex-direction: column;
+		min-height: auto;
 		background-color: $color-white;
 		color: $color-black;
 
@@ -13,7 +13,6 @@
 		&:nth-of-type(even) {
 			background-color: $color-black;
 			color: $color-white;
-			flex-direction: row-reverse;
 
 			a {
 				color: $color-white;
@@ -21,7 +20,7 @@
 		}
 
 		div {
-			width: 50%;
+			width: 100%;
 		}
 
 		.text {
@@ -36,26 +35,27 @@
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
+			height: 300px;
 		}
 	}
 }
 
-@media screen and (max-width: $screen-md-min) {
+@media screen and (min-width: $screen-md-min) {
 	.home {
 		.section {
-			flex-direction: column;
-			min-height: auto;
+			flex-direction: row;
+			min-height: calc(50vh - 80px);
 
 			&:nth-of-type(even) {
-				flex-direction: column;
+				flex-direction: row-reverse;
 			}
 
 			div {
-				width: 100%;
+				width: 50%;
 			}
 
 			.image {
-				height: 300px;
+				height: auto;
 			}
 		}
 	}

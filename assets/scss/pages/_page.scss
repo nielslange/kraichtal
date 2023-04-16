@@ -5,6 +5,7 @@ body.single #site-content {
 
 	#page {
 		display: flex;
+		flex-direction: column;
 
 		h1 {
 			color: $color-white;
@@ -12,7 +13,6 @@ body.single #site-content {
 			font-size: 2.5rem;
 			font-weight: 400;
 			margin-top: 0;
-			padding: 3em;
 			text-align: center;
 			&::after {
 				background-color: $color-white;
@@ -29,6 +29,7 @@ body.single #site-content {
 		}
 
 		#title {
+			box-sizing: border-box;
 			align-items: center;
 			background-color: rgba(51, 51, 51, 0.75);
 			background-blend-mode: darken;
@@ -36,18 +37,18 @@ body.single #site-content {
 			background-repeat: no-repeat;
 			background-size: cover;
 			display: flex;
-			height: calc(100vh - 160px);
+			height: 300px;
 			justify-content: center;
-			width: 50%;
+			width: 100%;
 		}
 
 		#content {
 			background-color: #fbfbfd;
 			box-sizing: border-box;
-			height: calc(100vh - 160px);
+			height: auto;
 			overflow-y: scroll;
 			padding: 3em;
-			width: 50%;
+			width: 100%;
 
 			#inner-content {
 				margin: 0 auto;
@@ -57,21 +58,21 @@ body.single #site-content {
 	}
 }
 
-@media screen and (max-width: $screen-md-min) {
+@media screen and (min-width: $screen-md-min) {
 	body.page #site-content,
 	body.blog #site-content,
 	body.single #site-content {
 		#page {
-			flex-direction: column;
+			flex-direction: row;
 
 			#title {
-				height: 300px;
-				width: 100%;
+				height: calc(100vh - 160px);
+				width: 50%;
 			}
 
 			#content {
-				height: auto;
-				width: 100%;
+				height: calc(100vh - 160px);
+				width: 50%;
 			}
 		}
 	}
