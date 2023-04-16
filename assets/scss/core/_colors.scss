@@ -1,11 +1,11 @@
 /* https://coolors.co/333333-666666-790e11-5e81ac-ffffff-ffffff */
-$color-black: hsl(0, 0%, 20%);
-$color-dark-grey: hsl(0, 0%, 40%);
-$color-medium-grey: hsl(0, 0%, 60%);
-$color-semi-light-grey: hsl(0, 0%, 80%);
-$color-light-grey: hsl(0, 0%, 95%);
-$color-white: hsl(0, 0%, 100%);
-$color-red: hsl(360, 80%, 25%);
+$color-black: rgb(51, 51, 51);
+$color-dark-grey: rgb(102, 102, 102);
+$color-medium-grey: rgb(153, 153, 153);
+$color-semi-light-grey: rgb(204, 204, 204);
+$color-light-grey: rgb(242, 242, 242);
+$color-white: rgb(255, 255, 255);
+$color-red: rgb(115, 13, 13);
 
 body {
 	background-color: $color-black;
