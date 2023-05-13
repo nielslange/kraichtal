@@ -16,16 +16,16 @@
  * @return string The formated date.
  */
 function get_formated_date( $date ) {
-	return datefmt_format(
-		datefmt_create(
-			'de-DE',
-			IntlDateFormatter::FULL,
-			IntlDateFormatter::NONE,
-			'Europe/Berlin',
-			IntlDateFormatter::GREGORIAN
-		),
-		strtotime( $date )
+	$formatter = new IntlDateFormatter(
+		'de_DE',
+		IntlDateFormatter::NONE,
+		IntlDateFormatter::NONE,
+		'Europe/Berlin',
+		IntlDateFormatter::GREGORIAN,
+		'EEEE, d. MMM y'
 	);
+
+	return $formatter->format( new DateTime( $date ) );
 }
 
 /**
