@@ -25,7 +25,7 @@ add_action( 'after_setup_theme', 'load_theme_textdomain' );
  * @return void
  */
 function kraichtal_feed_support() {
-	 add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'automatic-feed-links' );
 }
 add_action( 'after_setup_theme', 'kraichtal_feed_support' );
 
@@ -35,13 +35,13 @@ add_action( 'after_setup_theme', 'kraichtal_feed_support' );
  * @return void
  */
 function kraichtal_logo_support() {
-	 $defaults = array(
-		 'height'      => 140,
-		 'width'       => 400,
-		 'flex-height' => true,
-		 'flex-width'  => true,
-	 );
-	 add_theme_support( 'custom-logo', $defaults );
+	$defaults = array(
+		'height'      => 140,
+		'width'       => 400,
+		'flex-height' => true,
+		'flex-width'  => true,
+	);
+	add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'kraichtal_logo_support' );
 
