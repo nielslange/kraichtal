@@ -28,15 +28,12 @@ get_header(); ?>
 			<div id="page">
 
 				<?php
-				printf(
-					'<div id="title" style="background-image: url(%s)">
-						<h1>%s</h1>
-						<div>%s</div>
-					</div>',
-					get_the_post_thumbnail_url(),
-					get_the_title(),
-					get_the_content()
-				);
+
+				$image    = get_the_post_thumbnail_url();
+				$title    = get_the_title();
+				$subtitle = get_the_content();
+				print( get_cover_image( $image, $title, $subtitle ) );
+
 				?>
 
 				<div id="content">
@@ -63,26 +60,17 @@ get_header(); ?>
 						print( '<div id="inner-content">' );
 						while ( $query->have_posts() ) {
 							$query->the_post();
-							$id        = get_the_ID();
-							$status    = get_post_meta( $id, 'event_available', true );
+							$post_id   = get_the_ID();
+							$status    = get_post_meta( $post_id, 'event_available', true );
 							$img_class = $status ? null : 'course-sold-out';
 							$badge     = $status ? null : '<span class="sold-out">Ausgebucht</span>';
-							$permalink = get_the_permalink( $id );
-							$title     = get_the_title( $id );
+							$permalink = get_the_permalink( $post_id );
+							$title     = get_the_title( $post_id );
 							$teaser    = get_field( 'event_teaser' );
-							$date      = datefmt_format(
-								datefmt_create(
-									'de-DE',
-									IntlDateFormatter::FULL,
-									IntlDateFormatter::NONE,
-									'Europe/Berlin',
-									IntlDateFormatter::GREGORIAN
-								),
-								strtotime( get_post_meta( $id, 'event_date', true ) )
-							);
-							$time      = substr( get_post_meta( $id, 'event_time', true ), 0, 5 );
-							$price     = 'EUR ' . number_format( get_post_meta( $id, 'event_price', true ), 2, ',', '.' );
-							$image     = has_post_thumbnail( $id ) ? wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'large', false ) : array( 0 => get_stylesheet_directory_uri() . '/images/logo-stephanie-haller-augenschmaus-und-gaumenfreuden-quer.png' );
+							$date      = get_formated_date( get_post_meta( $post_id, 'event_date', true ) );
+							$time      = substr( get_post_meta( $post_id, 'event_time', true ), 0, 5 );
+							$price     = 'EUR ' . number_format( get_post_meta( $post_id, 'event_price', true ), 2, ',', '.' );
+							$image     = has_post_thumbnail( $post_id ) ? wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large', false ) : array( 0 => get_stylesheet_directory_uri() . '/images/logo-stephanie-haller-augenschmaus-und-gaumenfreuden-quer.png' );
 
 							printf(
 								'<div class="course">

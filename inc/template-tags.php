@@ -9,6 +9,56 @@
  * @since 1.0.0
  */
 
+/**
+ * Returns the formated date.
+ *
+ * @param string $date The date to format.
+ * @return string The formated date.
+ */
+function get_formated_date( $date ) {
+	return datefmt_format(
+		datefmt_create(
+			'de-DE',
+			IntlDateFormatter::FULL,
+			IntlDateFormatter::NONE,
+			'Europe/Berlin',
+			IntlDateFormatter::GREGORIAN
+		),
+		strtotime( $date )
+	);
+}
+
+/**
+ * Returns the cover image including title, and subtitle, if provided.
+ *
+ * @param string $image The image URL.
+ * @param string $title The title.
+ * @param string $subtitle The subtitle.
+ * @return string The cover image.
+ */
+function get_cover_image( $image, $title, $subtitle = '' ) {
+	$subtitle_html = '';
+
+	if ( ! empty( $subtitle ) ) {
+		$subtitle_html = sprintf( '<div>%s</div>', $subtitle );
+	}
+
+	return sprintf(
+		'<div id="title" style="background-image: url(%s)">
+			<h1>%s</h1>
+			%s
+		</div>',
+		$image,
+		$title,
+		$subtitle_html
+	);
+}
+
+/**
+ * Returns the copyright.
+ *
+ * @return string The copyright.
+*/
 function get_copyright() {
 
 	$data  = sprintf( '© %s Stephanie Haller • ', wp_date( 'Y' ) );

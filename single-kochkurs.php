@@ -23,9 +23,15 @@ get_header(); ?>
 			the_post();
 			?>
 			<div id="page">
-				<div id="title" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
-					<?php the_title( '<h1>', '</h1>' ); ?>
-				</div>
+
+				<?php
+
+				$image = get_the_post_thumbnail_url();
+				$title = get_the_title();
+				print( get_cover_image( $image, $title ) );
+
+				?>
+
 				<div id="content">
 					<div id="inner-content">
 						<?php
