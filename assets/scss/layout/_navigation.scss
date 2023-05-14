@@ -65,7 +65,7 @@
 	}
 }
 
-@media screen and (min-width: $screen-lg-min) {
+@media screen and (min-width: $screen-xl-min) {
 	#site-header-menu {
 		#menu-primary-toggle {
 			display: none;
@@ -91,7 +91,8 @@
 					font-weight: 600;
 					letter-spacing: 1px;
 
-					&:hover {
+					&:hover,
+					&:focus {
 						color: $color-red;
 					}
 				}
@@ -103,13 +104,15 @@
 				.sub-menu li a {
 					color: $color-dark-grey;
 
-					&:hover {
+					&:hover,
+					&:focus {
 						background-color: $color-light-grey;
 						color: $color-dark-grey;
 					}
 				}
 
-				&:hover {
+				&:hover,
+				&:focus {
 					ul {
 						background-color: $color-white;
 						position: absolute;
