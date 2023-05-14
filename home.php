@@ -43,21 +43,25 @@ $posts_page = get_option( 'page_for_posts' );
 					while ( have_posts() ) {
 						the_post();
 						setlocale( LC_TIME, 'de_DE' );
-						$id      = get_the_ID();
-						$class   = implode( ' ', get_post_class() );
-						$date    = datefmt_format(
-							datefmt_create(
-								'de-DE',
-								IntlDateFormatter::LONG,
-								IntlDateFormatter::NONE,
-								'Europe/Berlin',
-								IntlDateFormatter::GREGORIAN
-							),
-							strtotime( get_the_date( '', $id ) )
-						);
+						$id    = get_the_ID();
+						$class = implode( ' ', get_post_class() );
+						$date  = get_the_date( 'd. F Y', $id );
+						// $date  = get_formated_date( get_the_date( '', $id ) );
+						// $date    = datefmt_format(
+						// 	datefmt_create(
+						// 		'de-DE',
+						// 		IntlDateFormatter::LONG,
+						// 		IntlDateFormatter::NONE,
+						// 		'Europe/Berlin',
+						// 		IntlDateFormatter::GREGORIAN
+						// 	),
+						// 	strtotime( get_the_date( '', $id ) )
+						// );
 						$title   = get_the_title( $id );
 						$link    = get_the_permalink( $id );
 						$excerpt = get_the_excerpt( $id );
+
+						// var_dump( $date );
 
 						printf(
 							'<article class="%1$s" id="post-%2$s">
