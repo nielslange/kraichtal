@@ -37,6 +37,43 @@
 			background-repeat: no-repeat;
 			height: 300px;
 		}
+
+		&.full {
+			min-height: calc(100vh - 80px);
+			position: relative;
+			background-image: url("assets/images/hero.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-attachment: fixed;
+			background-position: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			opacity: 1;
+
+			.overlay {
+				background-color: #ffffff;
+				opacity: 0.5;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 1;
+				width: 100%;
+			}
+
+			.logo {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 2;
+				opacity: 1;
+				width: 80%;
+				max-width: 393px;
+			}
+		}
 	}
 }
 
