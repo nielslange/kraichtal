@@ -12,6 +12,9 @@
 	text-align: center;
 	width: 100%;
 	z-index: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	a {
 		color: $color-medium-grey;
@@ -25,5 +28,6 @@
 @media screen and (min-width: $screen-md-min) {
 	#site-footer {
 		position: fixed;
+		height: 80px;
 	}
 }
