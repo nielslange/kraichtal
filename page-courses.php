@@ -65,8 +65,7 @@ get_header(); ?>
 							$img_class = $status ? null : 'course-sold-out';
 							$badge     = $status ? null : '<span class="sold-out">Ausgebucht</span>';
 							$permalink = get_the_permalink( $post_id );
-							$title     = get_the_title( $post_id );
-							$teaser    = get_field( 'event_teaser' );
+							$title     = sprintf( '<a href="%1$s"><span class="title"><h2>%2$s</h2></span></a>', $permalink, get_the_title( $post_id ) );
 							$date      = get_formated_date( get_post_meta( $post_id, 'event_date', true ) );
 							$time      = substr( get_post_meta( $post_id, 'event_time', true ), 0, 5 );
 							$price     = 'EUR ' . number_format( get_post_meta( $post_id, 'event_price', true ), 2, ',', '.' );
@@ -74,12 +73,10 @@ get_header(); ?>
 
 							printf(
 								'<div class="course">
-									<a href="%1$s" class="image %9$s" style="display:block; min-height: 300px; background:url(%2$s); background-size:cover; background-position:center;"></a>
+									<a href="%1$s" class="image %8$s" style="display:block; min-height: 300px; background:url(%2$s); background-size:cover; background-position:center;"></a>
+									%7$s
 									%3$s
-									<h3>%4$s &bull; %5$s Uhr &bull; %6$s</h3>
-									<h2>%7$s</h2>
-									<p class="teaser">%8$s</p>
-									<p class="read-more"><a href="%1$s"><strong>Weiterlesen</strong></a></p>
+									<h3>%4$s <br> %5$s Uhr &bull; %6$s</h3>
 								</div>',
 								$permalink,
 								$image[0],
@@ -88,7 +85,6 @@ get_header(); ?>
 								$time,
 								$price,
 								$title,
-								$teaser,
 								$img_class
 							);
 						}

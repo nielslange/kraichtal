@@ -1,3 +1,7 @@
 body {
 	margin: 0;
 }
+
+body.admin-bar #site-header {
+	top: 32px;
+}
