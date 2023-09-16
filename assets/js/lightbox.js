@@ -1,3 +1,4 @@
+/* global lightbox */
 lightbox.option({
 	resizeDuration: 500,
 	maxWidth: 1200,

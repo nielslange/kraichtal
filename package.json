@@ -38,7 +38,7 @@
 		"format": "wp-scripts format",
 		"lint": "run-p -l 'lint:**'",
 		"lint:css": "wp-scripts lint-style style.css",
-		"lint:js": "wp-scripts lint-js 'assets/**/*.js'",
+		"lint:js": "wp-scripts lint-js 'assets/js/**/*.js'",
 		"lint:php": "composer lint",
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
 		"phpcs": " composer phpcs",

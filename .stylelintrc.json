@@ -1,6 +1,7 @@
 {
 	"extends": "stylelint-config-recommended",
 	"rules": {
-		"no-duplicate-selectors": null
+		"no-duplicate-selectors": null,
+		"no-descending-specificity": null
 	}
 }
