@@ -123,11 +123,11 @@ function kraichtal_register_scripts() {
 	wp_enqueue_script( 'kraichtal-menu-script', get_template_directory_uri() . '/assets/js/menu.js', array(), time(), true );
 
 	/**
-	 * Load lightbox2 only on gallery page.
+	 * Load Lightbox only on gallery page.
 	 */
 	if ( 'page-gallery.php' === basename( get_page_template() ) ) {
-		wp_enqueue_script( 'kraichtal-lightbox2-settings-script', get_template_directory_uri() . '/assets/js/lightbox.js', array( 'kraichtal-lightbox2-script' ), time(), true );
-		wp_enqueue_script( 'kraichtal-lightbox2-script', get_template_directory_uri() . '/assets/vendors/lightbox2/js/lightbox-plus-jquery.min.js', array(), time(), true );
+		wp_enqueue_script( 'kraichtal-lightbox2-library', get_template_directory_uri() . '/assets/vendors/lightbox2/js/lightbox-plus-jquery.min.js', array(), time(), true );
+		wp_enqueue_script( 'kraichtal-lightbox2-settings', get_template_directory_uri() . '/assets/js/lightbox.js', array( 'kraichtal-lightbox2-library' ), time(), true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'kraichtal_register_scripts' );
