@@ -33,7 +33,7 @@ add_theme_support( 'post-thumbnails', array( 'kochkurs' ) );
 
 add_filter( 'body_class', 'custom_class' );
 function custom_class( $classes ) {
-	if ( is_page_template( 'page-courses.php' ) ) {
+	if ( is_page_template( 'page-courses.php' ) || is_singular( 'kochkurs' ) ) {
 		$classes[] = 'courses';
 
 		if ( in_array( 'page', $classes, true ) ) {

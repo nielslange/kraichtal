@@ -31,7 +31,7 @@ get_header(); ?>
 					<?php foreach ( $images as $image ) : ?>
 						<div class="grid-item">
 							<a href="<?php echo esc_url( $image['url'] ); ?>" data-lightbox="roadtrip">
-								<img src="<?php echo esc_url( $image['sizes']['medium'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+								<img src="<?php echo esc_url( $image['sizes']['medium'] ); ?>" alt="foo-bar-<?php echo esc_attr( $image['name'] ); ?>" />
 							</a>
 						</div>
 					<?php endforeach; ?>
@@ -41,7 +41,6 @@ get_header(); ?>
 		endwhile;
 	endif;
 	?>
-
 
 </main><!-- #site-content -->
 

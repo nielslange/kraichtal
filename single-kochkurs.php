@@ -38,25 +38,25 @@ get_header(); ?>
 						$id              = get_the_ID();
 						$event_available = get_field( 'event_available' );
 						$event_sub_title = get_field( 'event_sub_title' );
-						$event_date      = get_field( 'event_date' );
+						$event_date      = get_formated_date( get_post_meta( $id, 'event_date', true ) );
 						$event_time      = get_field( 'event_time' );
 						$event_location  = get_field( 'event_location' );
-						$event_price     = get_field( 'event_price' );
-						$event_teaser    = get_field( 'event_teaser' );
-						$event_menu      = get_field( 'event_menu' );
+						$event_price     = 'EUR ' . number_format( get_post_meta( $id, 'event_price', true ), 2, ',', '.' );
+
+						$event_teaser = get_field( 'event_teaser' );
+						$event_menu   = get_field( 'event_menu' );
 
 						printf(
 							'<article class="%1$s" id="post-%2$d">
 								<h2>%3$s</h2>
-								<p>
-								<strong>Wo:</strong> %4$s <br>
-								<strong>Wann:</strong> %5$s um %6$s Uhr<br>
-								<strong>Kosten:</strong> EUR %7$s<br>
-								</p>
+								<p><strong>📍 Wo:</strong> %4$s</p>
+								<p><strong>🗓️ Wann:</strong> %5$s um %6$s Uhr</p>
+								<p><strong>💰 Kosten:</strong> %7$s</p>
+								<hr class="wp-block-separator has-alpha-channel-opacity"/>
 								<p>%8$s</p>
+								<hr class="wp-block-separator has-alpha-channel-opacity"/>
 								<h3>Menü / Programm</h3>
-								<p>%9$s</p>
-								<p>%10$s</p>
+								%9$s %10$s
 							</article>',
 							implode( ' ', get_post_class() ),
 							$id,
@@ -69,10 +69,14 @@ get_header(); ?>
 							$event_menu,
 							get_the_content()
 						);
+
+						if ( $event_available ) {
+							print( do_shortcode( '[ninja_form id=3]' ) );
+						} else {
+							print( '<p class="unavailable">Leider ist dieser Kochkurs bereits ausgebucht. Aber schau doch mal unter <a href="/kochkurse">Kochkurse</a>, vielleicht findest du ja noch einen anderen tollen Kurs!</p>' );
+						}
+
 						?>
-
-						Buchungsformular
-
 					</div><!-- #inner-content -->
 				</div><!-- #content -->
 			</div><!-- #page -->

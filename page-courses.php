@@ -40,19 +40,20 @@ function get_course_query_args() {
 }
 
 function render_single_course() {
-	$post_id   = get_the_ID();
-	$status    = get_post_meta( $post_id, 'event_available', true );
-	$img_class = $status ? null : 'course-sold-out';
-	$badge     = $status ? null : '<span class="sold-out">Ausgebucht</span>';
-	$permalink = get_the_permalink( $post_id );
-	$title     = sprintf( '<a href="%1$s"><span class="title"><h2>%2$s</h2></span></a>', $permalink, get_the_title( $post_id ) );
-	$date      = get_formated_date( get_post_meta( $post_id, 'event_date', true ) );
-	$time      = substr( get_post_meta( $post_id, 'event_time', true ), 0, 5 );
-	$price     = 'EUR ' . number_format( get_post_meta( $post_id, 'event_price', true ), 2, ',', '.' );
-	$image     = has_post_thumbnail( $post_id ) ? wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large', false ) : array( 0 => get_stylesheet_directory_uri() . '/images/logo-stephanie-haller-augenschmaus-und-gaumenfreuden-quer.png' );
+	$post_id       = get_the_ID();
+	$status        = get_post_meta( $post_id, 'event_available', true );
+	$img_class     = $status ? null : 'course-sold-out';
+	$badge         = $status ? null : '<span class="sold-out">Ausgebucht</span>';
+	$course_status = $status ? 'course-available' : 'course-sold-out';
+	$permalink     = get_the_permalink( $post_id );
+	$title         = sprintf( '<a href="%1$s"><span class="title"><h2>%2$s</h2></span></a>', $permalink, get_the_title( $post_id ) );
+	$date          = get_formated_date( get_post_meta( $post_id, 'event_date', true ) );
+	$time          = substr( get_post_meta( $post_id, 'event_time', true ), 0, 5 );
+	$price         = 'EUR ' . number_format( get_post_meta( $post_id, 'event_price', true ), 2, ',', '.' );
+	$image         = has_post_thumbnail( $post_id ) ? wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large', false ) : array( 0 => get_stylesheet_directory_uri() . '/images/logo-stephanie-haller-augenschmaus-und-gaumenfreuden-quer.png' );
 
 	printf(
-		'<div class="course">
+		'<div class="course %9$s">
 			<a href="%1$s" class="image %8$s" style="display:block; min-height: 300px; background:url(%2$s); background-size:cover; background-position:center;"></a>
 			%7$s
 			%3$s
@@ -65,7 +66,8 @@ function render_single_course() {
 		$time,
 		$price,
 		$title,
-		$img_class
+		$img_class,
+		$course_status
 	);
 }
 

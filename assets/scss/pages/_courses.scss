@@ -33,6 +33,11 @@ body.courses #site-content {
 				margin: 2em;
 				box-sizing: border-box;
 
+				.unavailable {
+					font-weight: 600;
+					color: lighten($color-red, 25%);
+				}
+
 				.course {
 					background-color: $color-light-grey;
 					overflow: hidden;
@@ -54,7 +59,6 @@ body.courses #site-content {
 					}
 
 					h3 {
-						background-color: $color-red;
 						color: $color-white;
 						font-size: 1em;
 						font-family: $font-sans-primary;
@@ -62,6 +66,16 @@ body.courses #site-content {
 						margin: 0;
 						padding: 0.5em;
 						text-align: center;
+					}
+					&.course-sold-out {
+						h3 {
+							background-color: $color-red;
+						}
+					}
+					&.course-available {
+						h3 {
+							background-color: $color-blue;
+						}
 					}
 
 					.teaser {
