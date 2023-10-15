@@ -24,9 +24,10 @@
 		background-color: $color-white;
 		display: block;
 		position: absolute;
-		left: 0;
+		right: 0;
 		top: 64px;
 		width: 100%;
+		max-width: $screen-sm-min;
 		height: calc(100vh - 80px);
 		overflow: scroll;
 		box-sizing: border-box;
