@@ -28,7 +28,7 @@ get_header(); ?>
 
 				$image = get_the_post_thumbnail_url();
 				$title = get_the_title();
-				print( get_cover_image( $image, $title ) );
+				print_cover_image( $image, $title )
 
 				?>
 

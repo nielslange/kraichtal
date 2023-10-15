@@ -13,7 +13,7 @@
 
 <footer id="site-footer">
 	<div class="wrap">
-		<?php print( get_copyright() ); ?>
+		<?php print_copyright(); ?>
 	</div><!-- .wrap -->
 </footer><!-- #site-footer -->
 
